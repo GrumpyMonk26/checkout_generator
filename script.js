@@ -50,6 +50,7 @@
 //   document.getElementById('random-checkout').addEventListener('click', updateCheckout);
   
 const nonCheckout = [159, 162, 163, 165, 166, 168, 169];
+const dartImage = `<img src="Dart_img.png" style="width: 35px; height: 35px;">`;
 
 // Function to generate a random number between 74 and 170
 function getRandomCheckout() {
@@ -91,7 +92,14 @@ async function updateCheckout() {
       const thirdDart = checkoutData.third_dart ? checkoutData.third_dart : ''; // Handle null dart
 
       // Update the div with the darts sequence
-      checkoutDiv.innerHTML = `<strong>${randomCheckout}</strong>: ${firstDart}, ${secondDart}, ${thirdDart}`;
+      checkoutDiv.innerHTML = `
+      <div><strong>🎯${randomCheckout}</strong></div>
+      ${dartImage} ${firstDart}, 
+      ${dartImage} ${secondDart}, 
+      ${thirdDart ? `${dartImage} ${thirdDart}` : ''}
+    `;
+    
+
     } else {
       checkoutDiv.innerHTML = `No checkout available for ${randomCheckout}`;
     }
